@@ -2,12 +2,11 @@ let demo=document.querySelector('.demo')
 let demo2=document.querySelector(".demo2")
 let n=0
 let string=`
-<style>
-*{margin: 0; padding: 0; box-sizing: border-box;}
-*::after{
+.skin *{margin: 0; padding: 0; box-sizing: border-box;}
+.skin *::after{
   box-sizing: border-box;
 }
-*::before{
+.skin *::before{
   box-sizing: border-box;
 }
 body{
@@ -211,24 +210,50 @@ body{
     border-radius:50%;
     background:red
 }
-</style>
 `
+let time=10
 demo.innerText=string.substring(0,n);
 demo2.innerHTML=string.substring(0,n);
 
-
-
-let id=setInterval(() => {
+const run=()=>{
     n=n+1
     
-     console.log(n)
     if(n===string.length){
         window.clearInterval(id)
         return
     }
     demo.innerText=string.substring(0,n);
     demo2.innerHTML=string.substring(0,n);
-    
-   
-  
-}, 0)
+    demo.scrollTop=demo.scrollHeight
+}
+
+const play=()=>{
+    return setInterval(run, time) 
+}
+let id=play()
+const pause=()=>{
+    window.clearInterval(id)
+}
+
+
+btnPause.onclick=()=>{
+    pause()
+}
+btnPlay.onclick=()=>{
+    id=play()
+}
+btnSlow.onclick=()=>{
+    pause()
+    time=100
+    id=play()
+}
+btnNormal.onclick=()=>{
+    pause()
+    time=10
+    id=play()
+}
+btnFast.onclick=()=>{
+    pause()
+    time=0
+    id=play()
+}

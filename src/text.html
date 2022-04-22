@@ -8,14 +8,39 @@
 </head>
 <body>
     <div class="demo"></div>
-    <div class="demo2"></div>
+    <style class="demo2"></style>
+    <div id="buttons">
+        <button id="btnPause">暂停</button>
+        <button id="btnPlay">播放</button>
+        <button id="btnSlow">慢速</button>
+        <button id="btnNormal">中速</button>
+        <button id="btnFast">快速</button>
+    </div>
     <style>
-     
+        #buttons{
+            position: fixed;
+            z-index: 10;
+            display: flex;
+        }
+        #buttons>button{
+            margin-right: 10px;
+            font-size: 15px;
+        }
+
         .demo{
             position: relative;
+            height:50vh;
+            top:0;
+            left:0;
+            width: 100%;
             overflow-y: auto;
         }
-        
+        .demo::-webkit-scrollbar{
+            display: none;
+        }
+        .html{
+            position: relative;
+        }
     </style>
     <div class="html">
         <div class="skin">
