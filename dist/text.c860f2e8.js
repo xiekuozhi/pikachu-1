@@ -1,7 +1,7 @@
-let demo=document.querySelector('.demo')
-let demo2=document.querySelector(".demo2")
-let n=0
-let string=`
+let demo = document.querySelector('.demo');
+let demo2 = document.querySelector(".demo2");
+let n = 0;
+let string = `
 .skin *{margin: 0; padding: 0; box-sizing: border-box;}
 .skin *::after{
   box-sizing: border-box;
@@ -210,50 +210,47 @@ body{
     border-radius:50%;
     background:red
 }
-`
-let time=10
-demo.innerText=string.substring(0,n);
-demo2.innerHTML=string.substring(0,n);
-
-const run=()=>{
-    n=n+1
-    
-    if(n===string.length){
-        window.clearInterval(id)
-        return
+`;
+let time = 10;
+demo.innerText = string.substring(0, n);
+demo2.innerHTML = string.substring(0, n);
+const run = ()=>{
+    n = n + 1;
+    if (n === string.length) {
+        window.clearInterval(id);
+        return;
     }
-    demo.innerText=string.substring(0,n);
-    demo2.innerHTML=string.substring(0,n);
-    demo.scrollTop=demo.scrollHeight
-}
+    demo.innerText = string.substring(0, n);
+    demo2.innerHTML = string.substring(0, n);
+    demo.scrollTop = demo.scrollHeight;
+};
+const play = ()=>{
+    return setInterval(run, time);
+};
+let id = play();
+const pause = ()=>{
+    window.clearInterval(id);
+};
+btnPause.onclick = ()=>{
+    pause();
+};
+btnPlay.onclick = ()=>{
+    id = play();
+};
+btnSlow.onclick = ()=>{
+    pause();
+    time = 100;
+    id = play();
+};
+btnNormal.onclick = ()=>{
+    pause();
+    time = 10;
+    id = play();
+};
+btnFast.onclick = ()=>{
+    pause();
+    time = 0;
+    id = play();
+};
 
-const play=()=>{
-    return setInterval(run, time) 
-}
-let id=play()
-const pause=()=>{
-    window.clearInterval(id)
-}
-
-
-btnPause.onclick=()=>{
-    pause()
-}
-btnPlay.onclick=()=>{
-    id=play()
-}
-btnSlow.onclick=()=>{
-    pause()
-    time=100
-    id=play()
-}
-btnNormal.onclick=()=>{
-    pause()
-    time=10
-    id=play()
-}
-btnFast.onclick=()=>{
-    pause()
-    time=0
-    id=play()
-}
+//# sourceMappingURL=text.c860f2e8.js.map
